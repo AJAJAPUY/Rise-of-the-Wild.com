@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rise of the Wild — Maintenance</title>
+<style>
+:root{
+  --bg1:#0b0f17; --bg2:#0f172a; --bg3:#0a1220;
+  --gold:#ffb000; --cyan:#00d4ff; --text:#cbd5e1; --muted:#7c8aa5;
+  --green:#00ff95; --panel:rgba(16,22,36,.9);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Segoe UI,Arial;background:#0b0f17;color:var(--text)}
+.screen{
+  min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:16px;
+  background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),#020617);
+  background-size:400% 400%; animation:bg 14s ease infinite; position:relative;
+}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.screen:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03)0,rgba(255,255,255,.03)1px,transparent 1px,transparent 3px)}
+.card{
+  width:100%;max-width:760px;background:var(--panel);border:2px solid rgba(255,176,0,.6);
+  border-radius:16px;padding:28px;text-align:center;box-shadow:0 0 40px rgba(255,176,0,.35)
+}
+.icon{
+  width:84px;height:84px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(255,176,0,.6); box-shadow:0 0 20px rgba(255,176,0,.6), inset 0 0 20px rgba(255,176,0,.2);
+  color:var(--gold); font-size:34px;
+}
+.title{font-weight:900;letter-spacing:4px;font-size:40px;color:var(--gold);
+  text-shadow:0 0 16px rgba(255,176,0,.7); margin:6px 0}
+.subtitle{color:var(--cyan);letter-spacing:3px;font-size:13px;margin-bottom:18px}
+.msg{background:#0f2233;border-left:4px solid var(--cyan);border-radius:10px;padding:16px;text-align:left;margin-bottom:14px}
+.status{background:rgba(0,255,150,.08);border:1px solid var(--green);color:var(--green);
+  padding:10px;border-radius:10px;margin-bottom:14px;font-size:12px}
+
+/* TIME */
+.time-head{font-size:10px;letter-spacing:3px;color:var(--muted);margin:10px 0}
+.countdown{display:flex;justify-content:center;gap:18px;margin-bottom:10px}
+.box{
+  background:#0f172a;border:2px solid var(--gold);border-radius:12px;padding:12px 14px;min-width:80px;
+  box-shadow:0 0 16px rgba(255,176,0,.4)
+}
+.val{font-size:28px;color:var(--gold);font-weight:800}
+.lbl{font-size:10px;color:var(--muted);letter-spacing:2px}
+
+/* Progress */
+.progress-wrap{margin:10px 0 16px}
+.progress{height:6px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--cyan));box-shadow:0 0 12px rgba(255,176,0,.7)}
+.progress-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:6px}
+
+/* What's coming */
+.section-title{font-size:11px;letter-spacing:3px;color:var(--muted);margin:14px 0}
+.features{background:#0f2233;border-radius:12px;padding:12px;text-align:left}
+.features li{list-style:none;margin:8px 0;padding-left:26px;position:relative}
+.features li:before{content:"■";position:absolute;left:0;color:var(--cyan)}
+.warn{margin-top:10px;border:1px solid #ff8a00;color:#ff8a00;background:rgba(255,138,0,.08);
+  border-radius:10px;padding:10px;font-size:12px}
+.footer{margin-top:10px;font-size:11px;color:var(--muted)}
+.footer a{color:#1877f2;text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="card">
+    <div class="icon">🔧</div>
+    <div class="title">MAINTENANCE</div>
+    <div class="subtitle">THE WILD IS BEING TAMED</div>
+
+    <div class="msg">
+      <strong>Rise of the Wild</strong> is currently undergoing scheduled maintenance. Our team of rangers is working hard to deliver new adventures. We'll be back before you know it!
+    </div>
+
+    <div class="status">● System Status: Maintenance in progress — Expected downtime ~12 hours</div>
+
+    <div class="time-head">TIME REMAINING</div>
+    <div class="countdown">
+      <div class="box"><div id="h" class="val">00</div><div class="lbl">HOURS</div></div>
+      <div class="box"><div id="m" class="val">00</div><div class="lbl">MINS</div></div>
+      <div class="box"><div id="s" class="val">00</div><div class="lbl">SECS</div></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress"><div id="bar" class="bar"></div></div>
+      <div class="progress-labels">
+        <span>Maintenance started</span>
+        <span>0.0% complete</span>
+        <span>Back online</span>
+      </div>
+    </div>
+
+    <div class="section-title">WHAT'S COMING</div>
+    <ul class="features">
+      <li><strong>New Biome:</strong> Discover the Volcanic Peaks</li>
+      <li><strong>5 Rare Animals:</strong> Phoenix, Vulture, Dragon Lizard & more</li>
+      <li><strong>Performance Boost:</strong> 40% faster load times</li>
+      <li><strong>Bug Fixes:</strong> Fixed encounter system issues</li>
+      <li><strong>Balance Update:</strong> Rebalanced creature stats</li>
+    </ul>
+
+    <div class="warn">● All progress is safe. Your collection and inventory will be preserved.</div>
+
+    <div class="footer">
+      Follow <a href="https://www.facebook.com/jaredpanilan10" target="_blank">Facebook</a> for real-time updates •
+      Last updated: <span id="t">--:--</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const KEY="rotw_end_v3"; const DUR=12*60*60*1000;
+function getEnd(){const s=localStorage.getItem(KEY);
+ if(s && +s>Date.now()) return +s;
+ const e=Date.now()+DUR; localStorage.setItem(KEY,e); return e;}
+const end=getEnd(); const start=end-DUR;
+
+function pad(n){return String(n).padStart(2,'0')}
+function tick(){
+ const now=Date.now(); const d=Math.max(0,end-now);
+ const h=Math.floor(d/(1000*60*60));
+ const m=Math.floor((d%(1000*60*60))/(1000*60));
+ const s=Math.floor((d%(1000*60))/1000);
+ document.getElementById("h").textContent=pad(h);
+ document.getElementById("m").textContent=pad(m);
+ document.getElementById("s").textContent=pad(s);
+ const pct=Math.min(100,Math.max(0,((now-start)/DUR)*100));
+ document.getElementById("bar").style.width=pct+"%";
+}
+function updateTime(){
+ const d=new Date();
+ document.getElementById("t").textContent=d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+}
+tick(); updateTime(); setInterval(tick,1000); setInterval(updateTime,60000);
+</script>
+</body>
+</html>
